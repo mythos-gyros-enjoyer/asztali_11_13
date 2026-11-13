@@ -1,0 +1,33 @@
+﻿<Window x:Class="Konyvek.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Könyvek" Height="450" Width="800">
+    <Grid Margin="10">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="290"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+
+        <StackPanel Grid.Column="0" Orientation="Vertical" Margin="0,10,10,0">
+            <Button Content="Könyvek betöltése" Height="30" Margin="0,0,0,22" Click="Betoltes_Click"/>
+            <Button Content="Hány könyv van?" Height="30" Margin="0,0,0,22" Click="Darab_Click"/>
+            <Button Content="Melyik a leghosszabb könyv?" Height="30" Margin="0,0,0,22" Click="Leghosszabb_Click"/>
+            <Button Content="Átlagos oldalszám" Height="30" Margin="0,0,0,22" Click="Atlag_Click"/>
+            <Button Content="Csak elérhető könyvek" Height="30" Margin="0,0,0,22" Click="CsakElerheto_Click"/>
+            <Button Content="Csak címek listája" Height="30" Margin="0,0,0,22" Click="CsakCimek_Click"/>
+            <Button Content="Rendezés szerző szerint" Height="30" Margin="0,0,0,22" Click="Rendezes_Click"/>
+            <ProgressBar x:Name="pbBetoltes" Height="22" Minimum="0" Maximum="100" Value="0" Foreground="#FF06B025"/>
+        </StackPanel>
+
+        <DataGrid x:Name="dgKonyvek" Grid.Column="1" AutoGenerateColumns="False" IsReadOnly="True"
+                  CanUserAddRows="False" GridLinesVisibility="All">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Cim" Binding="{Binding Cim}" Width="*"/>
+                <DataGridTextColumn Header="Szerzo" Binding="{Binding Szerzo}" Width="*"/>
+                <DataGridTextColumn Header="Oldalszam" Binding="{Binding Oldalszam}" Width="*"/>
+                <DataGridTextColumn Header="Mufaj" Binding="{Binding Mufaj}" Width="*"/>
+                <DataGridCheckBoxColumn Header="Elerheto" Binding="{Binding Elerheto}" Width="*"/>
+            </DataGrid.Columns>
+        </DataGrid>
+    </Grid>
+</Window>
