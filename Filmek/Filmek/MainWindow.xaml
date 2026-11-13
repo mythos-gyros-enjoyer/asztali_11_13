@@ -1,0 +1,33 @@
+﻿<Window x:Class="Filmek.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Filmek" Height="450" Width="800">
+    <Grid Margin="15">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="320"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+
+        <StackPanel Grid.Column="0" Orientation="Vertical" Margin="0,5,20,0">
+            <Button Content="Filmek betöltése" Height="24" Margin="0,0,0,10" Click="Betoltes_Click"/>
+            <Button Content="Hány film van?" Height="24" Margin="0,0,0,10" Click="Darab_Click"/>
+            <Button Content="Leghosszabb film?" Height="24" Margin="0,0,0,10" Click="Leghosszabb_Click"/>
+            <Button Content="Átlag értékelés" Height="24" Margin="0,0,0,10" Click="Atlag_Click"/>
+            <Button Content="Csak sci-fi" Height="24" Margin="0,0,0,10" Click="CsakSciFi_Click"/>
+            <Button Content="Csak címek" Height="24" Margin="0,0,0,10" Click="CsakCimek_Click"/>
+            <Button Content="Rendezés cím szerint" Height="24" Margin="0,0,0,10" Click="Rendezes_Click"/>
+            <ProgressBar x:Name="pbBetoltes" Height="22" Minimum="0" Maximum="100" Value="0" Foreground="#FF06B025"/>
+        </StackPanel>
+
+        <DataGrid x:Name="dgFilmek" Grid.Column="1" AutoGenerateColumns="False" IsReadOnly="True"
+                  CanUserAddRows="False" GridLinesVisibility="All" SelectionMode="Single"
+                  SelectionChanged="Filmek_SelectionChanged">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Cim" Binding="{Binding Cim}" Width="*"/>
+                <DataGridTextColumn Header="Mufaj" Binding="{Binding Mufaj}" Width="*"/>
+                <DataGridTextColumn Header="Hossz" Binding="{Binding Hossz}" Width="*"/>
+                <DataGridTextColumn Header="Ertekeles" Binding="{Binding Ertekeles}" Width="*"/>
+            </DataGrid.Columns>
+        </DataGrid>
+    </Grid>
+</Window>
